@@ -23,5 +23,11 @@ void    quick_sort(int *tab, int start, int end);
 void    print_tab(int *tab, int size);
 void	give_index(t_head *pile, int *tab);
 int		*create_tab(t_head *pile);
+void	swap_a(t_head *pile_a);
+void	rotate_a(t_head *pile_a);
+void	reverse_rotate_a(t_head *pile_a);
+void	push_b(t_head *pile_b, t_head *pile_a);
+void	push_a(t_head *pile_a, t_head *pile_b);
+void    radix_swap(t_head *pile_a, t_head *pile_b);
 
 #endif

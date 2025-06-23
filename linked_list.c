@@ -41,19 +41,26 @@ void	add_stack(t_node *node, t_head **pile)
 	++(*pile)->size;
 }
 
-void	print_pile(t_head *pile)
+void	print_piles(t_head *pile_a, t_head *pile_b)
 {
 	t_node	*tmp;
 
-	if (!pile)
+	if (!pile_a || !pile_b)
 		return ;
-	tmp = pile->first;
+	tmp = pile_a->first;
 	while (tmp)
 	{
 		printf("\\__%d__/ [%d]\n", tmp->val, *&(tmp->index)); 
 		tmp = tmp->next;
 	}
-	printf(" pile a (%d elements)\n", pile->size);
+	printf(" pile a (%d elements)\n", pile_a->size);
+	tmp = pile_b->first;
+	while (tmp)
+	{
+		printf("\\__%d__/ [%d]\n", tmp->val, *&(tmp->index)); 
+		tmp = tmp->next;
+	}
+	printf(" pile b (%d elements)\n", pile_b->size);
 }
 
 void	free_pile(t_head *pile)
@@ -100,8 +107,10 @@ int		main(int argc, char **argv)
 	int		i;
 	int		*tab;
 	t_head	*pile_a;
+	t_head	*pile_b;
 
 	pile_a = create_pile();
+	pile_b = create_pile();
 	if (argc < 2)
 		return (printf("\n"));
 	i = 1;
@@ -110,8 +119,11 @@ int		main(int argc, char **argv)
 	tab = create_tab(pile_a);
 	quick_sort(tab, 0, pile_a->size - 1); 
 	give_index(pile_a, tab);
-	print_pile(pile_a);
+	print_piles(pile_a, pile_b);
+	radix_swap(pile_a, pile_b);
+	print_piles(pile_a, pile_b);
 	free(tab);
 	free_pile(pile_a);
+	free(pile_b);
 	return (0);
 }
