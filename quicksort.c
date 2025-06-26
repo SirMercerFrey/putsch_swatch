@@ -61,7 +61,7 @@ int		*create_tab(t_head *pile)
 
 	if (!pile)
 		return (NULL);
-	tab = malloc(sizeof(pile->size));
+	tab = malloc(sizeof(int) * pile->size);
 	if (!tab)
 		return (NULL);
 	tmp = pile->first;

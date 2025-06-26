@@ -42,6 +42,23 @@ void	rotate_a(t_head *pile_a)
 	printf("rotate_a\n");
 }
 
+void	rotate_b(t_head *pile_b)
+{
+	t_node	*tmp;
+	t_node	*current;
+
+	if (pile_b->size < 2)
+		return ;
+	tmp = pile_b->first;
+	pile_b->first = pile_b->first->next;	
+	current = pile_b->first;
+	while (current->next)
+		current = current->next;
+	current->next = tmp;
+	tmp->next = NULL;
+	printf("rotate_b\n");
+}
+
 void	reverse_rotate_a(t_head *pile_a)
 {
 	t_node	*tmp;
@@ -57,6 +74,23 @@ void	reverse_rotate_a(t_head *pile_a)
 	tmp->next = pile_a->first;
 	pile_a->first = tmp;
 	printf("reverse_rotate_a\n");
+}
+
+void	reverse_rotate_b(t_head *pile_b)
+{
+	t_node	*tmp;
+	t_node	*current;
+
+	if (pile_b->size < 2)
+		return ;
+	current = pile_b->first;
+	while (current->next->next)
+		current = current->next;
+	tmp = current->next;
+	current->next = NULL;
+	tmp->next = pile_b->first;
+	pile_b->first = tmp;
+	printf("reverse_rotate_b\n");
 }
 
 void	push_b(t_head *pile_b, t_head *pile_a)
@@ -95,7 +129,7 @@ void	push_a(t_head *pile_a, t_head *pile_b)
 	printf("push_a\n");
 }
 
-void	radix_swap(t_head *pile_a, t_head *pile_b)
+void	radix_sort(t_head *pile_a, t_head *pile_b)
 {
 	int		bits;
 	int		size;

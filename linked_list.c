@@ -120,7 +120,7 @@ int		main(int argc, char **argv)
 	quick_sort(tab, 0, pile_a->size - 1); 
 	give_index(pile_a, tab);
 	print_piles(pile_a, pile_b);
-	radix_swap(pile_a, pile_b);
+	chunk_sort(pile_a, pile_b);	
 	print_piles(pile_a, pile_b);
 	free(tab);
 	free_pile(pile_a);
